@@ -4,12 +4,27 @@ kind: Kustomization
 resources:
   - namespace.yaml
 
-  - postgres/
-  - redis/
+  # PostgreSQL
+  - postgres/postgres-secret.yaml
+  - postgres/postgres-pvc.yaml
+  - postgres/postgres-service.yaml
+  - postgres/postgres-deployment.yaml
 
-  - backend/
-  - frontend/
+  # Redis
+  - redis/redis-service.yaml
+  - redis/redis-deployment.yaml
 
-  - hpa/
+  # Backend
+  - backend/backend-secret.yaml
+  - backend/backend-service.yaml
+  - backend/backend-deployment.yaml
 
+  # Frontend
+  - frontend/frontend-service.yaml
+  - frontend/frontend-deployment.yaml
+
+  # HPA
+  - hpa/backend-hpa.yaml
+
+  # Ingress
   - ingress.yaml
